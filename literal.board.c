@@ -1,23 +1,25 @@
 #include <stdio.h>
 
 short literal_sublime(char* lil, char sub) {
-	char num,token = 0;
+	char num = 1;
+    char token = 0;
 	//sscanf(lil,"%d",&num);
-	char tok[] = "^";
+	char tok[] = ";";
 	while(!token) {
-		sub++;
-		for(;lil[sub]=='\0';) {
-		    token = 1;
-		    break;
+        num = lil[sub];
+		for(;lil[sub]==tok[token];) {
+		    token++;
+		    //break;
 		}
+        sub++;
 	}
 	
-	return sub;
+	return num;
 }
 
 short due_to(char *lil, char sub) {
-	char way = literal_sublime(lil, sub);
-	return way;
+	char mental = literal_sublime(lil, sub);
+	return mental;
 }
 
 short draw_sublime(char *lil, short height) {
@@ -50,16 +52,16 @@ short draw_sublime(char *lil, short height) {
 int draw(char*lil) {
 	system("clear");
 	printf("%s", "SUBLIME BOARD\n");
-	short sub = draw_sublime(lil,10);
+	short fictional_devil = draw_sublime(lil,10);
 	scanf("%s",lil);
 	printf("%s", "\n >> sublime.literal(");
-	printf("%d",sub);
+	printf("%d",fictional_devil);
 	printf("%s","^1) -- ");
 	return draw(lil);
 }
 
 int main() {
-	char lil[100];
+	char lil[] = "13^1;";
 	return draw(lil);
 }
 
@@ -70,4 +72,4 @@ int main() {
 (1^1,,++1^1)"$;
 board.powerOn(13);
 board.blink();
-*/ 
+*/
