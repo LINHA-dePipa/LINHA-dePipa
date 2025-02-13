@@ -1,16 +1,29 @@
 #include <stdio.h>
 
-short literal_sublime(char* lil,char sub) {
-	char num;
-	sscanf(lil,"%d",&num);
+short literal_sublime(char* lil, char sub) {
+	char num,token = 0;
+	//sscanf(lil,"%d",&num);
+	char tok[] = "^";
+	while(!token) {
+		sub++;
+		for(;lil[sub]=='\0';) {
+		    token = 1;
+		    break;
+		}
+	}
 	
-	return num;
+	return sub;
+}
+
+short due_to(char *lil, char sub) {
+	char way = literal_sublime(lil, sub);
+	return way;
 }
 
 short draw_sublime(char *lil, short height) {
 	char i = 0;
 	
-	short exact = literal_sublime(lil,0);
+	short exact = due_to(lil,0);
 	printf("%s", " *****************");
 	/* Draw each-port */
 	for (i;i <= height;i++) {
@@ -52,6 +65,9 @@ int main() {
 
 /*
 13^1;
+1"o, 13^1, 1"o, 13^0;
+(13^1,9:00,13^0)"o;
+(1^1,,++1^1)"$;
 board.powerOn(13);
 board.blink();
-*/
+*/ 
