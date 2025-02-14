@@ -1,68 +1,79 @@
 #include <stdio.h>
+// GOES RANDOMIC BTW
+#define LIL char
 
-short literal_sublime(char* lil, char sub) {
-	char num = 1;
+LIL literal_sublime(char* lil, char sub) {
+    char non_literal = 0;
     char token = 0;
-	//sscanf(lil,"%d",&num);
-	char tok[] = ";";
-	while(!token) {
-        num = lil[sub];
-		for(;lil[sub]==tok[token];) {
-		    token++;
-		    //break;
-		}
+    //sscanf(lil,"%d",&num);
+    char tok[] = ";";//59
+    while(lil[sub]<57) {
+        non_literal = non_literal*10+(lil[sub]-48);
+
+        //num*=10;
         sub++;
-	}
-	
-	return num;
+    }
+
+    return non_literal;
 }
 
-short due_to(char *lil, char sub) {
-	char mental = literal_sublime(lil, sub);
-	return mental;
+LIL power(char *lil, char sub, char due, char mental) {
+    //mental='^';
+    return literal_sublime(lil, sub);
 }
 
-short draw_sublime(char *lil, short height) {
-	char i = 0;
-	
-	short exact = due_to(lil,0);
-	printf("%s", " *****************");
-	/* Draw each-port */
-	for (i;i <= height;i++) {
-		if(i==2) {
-			printf("%s", "*   LITERAL        # *\n");
-		}
-		if(i>5) {
-			printf("%s", "* @                ");
-		} else {
-			printf("%s", "*                 ");
-		}
-		if(i==exact) {
-			printf("%i", exact);
-		} else {
-			printf("%s", "@");
-		}
-		
-		printf("%s","  *\n");
-	}
-	printf("%s", " *********************\n >>_");
-	return exact;
+LIL due_to(char *lil, char sub, char mental) {
+    char due = power(lil, sub, 0, mental);
+    return due;
 }
 
-int draw(char*lil) {
-	system("clear");
-	printf("%s", "SUBLIME BOARD\n");
-	short fictional_devil = draw_sublime(lil,10);
-	scanf("%s",lil);
-	printf("%s", "\n >> sublime.literal(");
-	printf("%d",fictional_devil);
-	printf("%s","^1) -- ");
-	return draw(lil);
+void ddd(char*dfault) {
+    printf("%s", dfault);
+}
+
+LIL draw_sublime(char *lil, short height) {
+    char i = 0;
+
+    char exact = due_to(lil,i,exact);
+    ddd(" *****************");
+    /* Draw each-port */
+    for (i; i <= height; i++) {
+        if(i==2) {
+            ddd("*   LITERAL        # *\n");
+        }
+        if(i>5) {
+            ddd("* @                ");
+        } else {
+            ddd("*                 ");
+        }
+        if(i==exact) {
+            printf("%i", exact);
+        } else {
+            ddd("@");
+        }
+
+        ddd("  *\n");
+    }
+    ddd(" *********************\n >>_");
+    return exact;
+}
+
+int draw(char*lil, short infinite) {
+    while(0<infinite-10500)
+        infinite++;
+    system("clear");
+    ddd("SUBLIME BOARD\n");
+    LIL fictional_devil = draw_sublime(lil,10);
+    scanf("%s",lil);
+    ddd("\n >> sublime.literal(");
+    printf("%d",fictional_devil);
+    ddd("^1) -- ");
+    return draw(lil, infinite+1);
 }
 
 int main() {
-	char lil[] = "13^1;";
-	return draw(lil);
+    char lil[] = "13;";
+    return draw(lil,0);
 }
 
 /*
@@ -72,4 +83,4 @@ int main() {
 (1^1,,++1^1)"$;
 board.powerOn(13);
 board.blink();
-*/
+*/ 
