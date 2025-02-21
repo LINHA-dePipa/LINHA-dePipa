@@ -1,0 +1,2 @@
+quadrupte:
+  biceps 400
