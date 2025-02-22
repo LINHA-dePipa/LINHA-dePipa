@@ -3,11 +3,12 @@
 #define LIL char
 #define image '@'
 
-LIL Subjudge() {
+static LIL Subjudge(char order) {
     static char j = 0;
-    j++;
-    return j;
+    j++;if(order<j)return j;
 }
+
+void ddd(char*dfault);
 
 LIL literal_sublime(char* lil, char sub) {
     char non_literal = 0;
@@ -25,7 +26,7 @@ LIL literal_sublime(char* lil, char sub) {
 }
 
 LIL exige(const char ps1, char ps2) {
-    static char remain[666];
+     char remain[666];
     if(ps1!=0)
         remain[ps2] = ps2;
     return remain[ps2];
@@ -40,8 +41,8 @@ LIL rebuild(char mental, char due, char sub, char*lil) {
         const char twin = literal_sublime(lil, sub);
         while(due<twin) {
             due++;
-            printf("%i\n", due);
-            exige(twin,due);
+            //printf("%i\n", due);
+            //exige(twin,due);
             //fine
         } for(;twin<due;) { //dam else :'(
             due--;
@@ -57,12 +58,12 @@ LIL due_to(char *lil, char sub, char mental) {
     sub++;
     mental = lil[sub];
     //char twin = rebuild(lil, Subjudge(-1), literal_sublime(lil, sub), mental);
-    char twin = rebuild(mental, literal_sublime(lil, sub), Subjudge()-1, lil);
+    char twin = rebuild(mental, literal_sublime(lil, sub), Subjudge(0)-1, lil);
 
     return twin;
 }
 
-void ddd(char*dfault) {
+inline void ddd(char*dfault) {
     printf("%s", dfault);
 }
 
@@ -82,7 +83,7 @@ LIL draw_sublime(char *lil, short height) {
             ddd("*                 ");
         }
         if(i==exact) {
-            printf("%i", Subjudge());
+            printf("%i", Subjudge(exact));
         } else {
             ddd("@");
         }
@@ -94,7 +95,7 @@ LIL draw_sublime(char *lil, short height) {
 }
 
 int draw(char*lil, short infinite) {
-    while(0<infinite-10500)
+    while(0>infinite-1000)
         infinite++;
     system("clear");
     ddd("SUBLIME BOARD\n");
@@ -103,12 +104,12 @@ int draw(char*lil, short infinite) {
     ddd("\n >> sublime.literal(");
     printf("%d",fictional_devil);
     ddd("^1) -- ");
-    return draw(lil, infinite+1);
+    return draw(lil, infinite-1001);
 }
 
 int main() {
-    char lil[] = "55@255;";
-    return draw(lil,0);
+    char lil[] = "78@255;";
+    return draw(lil,lil[0]);
 }
 
 /*
